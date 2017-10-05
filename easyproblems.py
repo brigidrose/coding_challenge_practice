@@ -86,6 +86,57 @@ def is_anagram_of_palindrome(word):
 
 ###############################################################################
 
+"""Decode a string.
+
+A valid code is a sequence of numbers and letter, always starting with a number
+and ending with letter(s).
+
+Each number tells you how many characters to skip before finding a good letter.
+After each good letter should come the next next number.
+
+For example, the string "hey" could be encoded by "0h1ae2bcy". This means
+"skip 0, find the 'h', skip 1, find the 'e', skip 2, find the 'y'".
+
+A single letter should work::
+
+    >>> decode("0h")
+    'h'
+
+    >>> decode("2abh")
+    'h'
+
+Longer patterns should work::
+
+    >>> decode("0h1ae2bcy")
+    'hey'
+"""
+
+
+def decode(s):
+    """Decode a string."""
+
+    #create an empty string to add letters
+    word = " "
+
+    #create a counter variable
+    i = 0
+
+    #while we haven't reached the end of the string
+    while i < len(s):
+        #create a var that holds the value of the numeric val at 0 index of string
+        num_to_skip = int(s[i])
+        #0 index of string is now x (first num in string) + 1 (+1 because zero index)
+        i += num_to_skip + 1
+        #what is this doing?
+        word += s[i]
+        #go to the next index
+        i += 1
+
+    return word
+
+###############################################################################
+
+
 
 
 
